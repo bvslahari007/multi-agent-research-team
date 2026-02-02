@@ -1,2 +1,19 @@
-# multi-agent-research-team
-This project explores how multiple AI agents can work together like a research team. Each agent has a specific role and shares only compressed, relevant context instead of full conversations, helping reduce token usage while still handling complex research tasks efficiently.
+# Multi-Agent Research Team
+This project is built as part of the Intel Unnati Program.
+
+## Problem Statement
+Build a collaborative research team of AI agents using compressed context sharing to reduce token costs while coordinating on complex research tasks.
+
+## Idea Overview
+- Multiple AI agents work together on a research query
+- Each agent has a specific role (research, summarisation, coordination)
+- Agents share only compressed and relevant context instead of full histories
+
+## Tech Stack (Planned)
+- Python
+- Large Language Models (LLMs)
+- Prompt-based agent communication
+
+## Current Status
+Project initialised – understanding problem and designing architecture.
+
