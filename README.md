@@ -14,6 +14,13 @@ Build a collaborative research team of AI agents using compressed context sharin
 - Large Language Models (LLMs)
 - Prompt-based agent communication
 
-## Current Status
+## Daily Work Update
+
+### Day 1 Progress
 Project initialised – understanding problem and designing architecture.
+
+### Day 2 Progress
+- Reviewed project structure
+- Understood Git status and clean working tree
+
 
