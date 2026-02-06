@@ -1,4 +1,4 @@
-# Multi-Agent Research Support System  
+# Multi-Agent Research Team  
 ### Compressed Context Collaboration Prototype
 
 ## Overview
@@ -50,7 +50,8 @@ The system consists of three specialised agents coordinated through a central ma
 1. Run the program using the command line  
 2. Enter a research-oriented topic  
 3. Optionally provide context to guide exploration  
-4. Choose between structured exploration, compressed summary, or coordinated output  
+4. Choose between structured exploration, compressed summary, or coordinated output
+5. To run the project, provide your own ScaleDown Community API key by setting it as an environment variable in a local `.env` file. The API key is required for compressed context summarization.
 
 ---
 
@@ -62,5 +63,5 @@ The system consists of three specialised agents coordinated through a central ma
 
 ## Project Links
 
-- Project Report: [](https://docs.google.com/document/d/1ZQGTB_5Fv5nMvMRKUYEltIB0LcEKtiLuJfhR-RVFOlI/edit?tab=t.0) 
+- [Link to the project report](https://docs.google.com/document/d/1ZQGTB_5Fv5nMvMRKUYEltIB0LcEKtiLuJfhR-RVFOlI/edit?tab=t.0) 
 
