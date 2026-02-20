@@ -17,7 +17,9 @@ This project was built to explore how multiple agents can collaborate through or
 - Fault-tolerant fallback handling  
 - Structured CLI interface
 
-## How it works:
+## How it works
+
+```
 User Input
    ↓
 Manager Agent
@@ -31,6 +33,7 @@ Critic Agent
 Summariser Agent (Scaledown API)
    ↓
 Final Output
+```
 
 The system consists of three specialised agents coordinated through a central manager.
 
