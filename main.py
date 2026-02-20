@@ -1,64 +1,100 @@
 from agents.manager_agent import handle_request
 
-print("\nMulti-Agent Research Support System\n")
-print(
-    "This system supports research-oriented exploration by structuring thinking\n"
-    "and demonstrating how multiple agents collaborate through compressed context sharing.\n"
-)
 
-topic = input("Enter a topic or idea to explore:\n> ").strip()
-while not topic:
-    topic = input("Please enter a non-empty topic:\n> ").strip()
+def get_non_empty_input(prompt):
+    value = input(prompt).strip()
+    while not value:
+        value = input("Please enter a non-empty value:\n> ").strip()
+    return value
 
-context = input(
-    "\nOptional: Add scope or focus (press Enter to skip):\n> "
-).strip() or None
 
-print("\nProcessing exploration...\n")
+def display_research(content):
+    print(f"\nDetected Genre: {content['genre']}\n")
+    print("Research Insights:\n")
+    for point in content["insights"]:
+        print(f"- {point}")
+    print("\nAssumptions:\n")
+    for assumption in content["assumptions"]:
+        print(f"- {assumption}")
 
-while True:
-    print("\nChoose an output view:")
-    print("1. Structured research exploration")
-    print("2. Compressed context summary")
-    print("3. Final coordinated output")
-    print("4. Everything")
-    print("5. Exit")
 
-    choice = input("> ").strip()
+def display_summary(content):
+    print("\nCompressed Context Summary:\n")
+    print(content["summary"])
 
-    if choice == "5":
-        print("\nSession completed.")
-        break
 
-    if choice not in {"1", "2", "3", "4"}:
-        print("Invalid choice.")
-        continue
+def display_critique(content):
+    print("\nCritic Evaluation:\n")
+    print(f"Score: {content['score']}/3\n")
+    print("Feedback:")
+    for item in content["feedback"]:
+        print(f"- {item}")
 
-    result = handle_request(topic, context, choice)
 
-    print("\n" + "=" * 55)
+def display_complete(state):
+    print("\n=== FULL SYSTEM STATE ===\n")
 
-    if result["type"] == "research":
-        print(f"Detected genre: {result['content']['genre']}\n")
-        for point in result["content"]["insights"]:
-            print("- " + point)
-        print("\nAssumptions:")
-        for a in result["content"]["assumptions"]:
-            print("- " + a)
+    print("Research Insights:")
+    for point in state["research"]["insights"]:
+        print(f"- {point}")
 
-    elif result["type"] == "summary":
-        print("Compressed Context Summary\n")
-        print(result["content"]["summary"])
+    print("\nCritic Score:", state["critique"]["score"])
+    print("Critic Feedback:")
+    for item in state["critique"]["feedback"]:
+        print(f"- {item}")
 
-    elif result["type"] == "all":
-        print("Structured Research Exploration\n")
-        for point in result["content"]["research"]["insights"]:
-            print("- " + point)
-        print("\nCompressed Context Summary\n")
-        print(result["content"]["summary"]["summary"])
+    print("\nFinal Summary:\n")
+    print(state["summary"]["summary"])
 
-    else:
-        print("Final Coordinated Output\n")
-        print(result["content"])
 
-    print("\n" + "=" * 55)
+if __name__ == "__main__":
+
+    print("\nMulti-Agent Research Support System\n")
+    print(
+        "This system demonstrates coordinated multi-agent reasoning\n"
+        "with research generation, evaluation, and API-based compression.\n"
+    )
+
+    topic = get_non_empty_input("Enter a topic or idea to explore:\n> ")
+
+    context = input(
+        "\nOptional: Add scope or focus (press Enter to skip):\n> "
+    ).strip() or None
+
+    print("\nProcessing exploration...\n")
+
+    while True:
+        print("\nChoose an output view:")
+        print("1. Structured research exploration")
+        print("2. Compressed context summary (API)")
+        print("3. Critic evaluation")
+        print("4. Complete system state")
+        print("5. Exit")
+
+        choice = input("> ").strip()
+
+        if choice == "5":
+            print("\nSession completed.")
+            break
+
+        if choice not in {"1", "2", "3", "4"}:
+            print("Invalid choice.")
+            continue
+
+        result = handle_request(topic, context, choice)
+
+        print("\n" + "=" * 60)
+
+        if result["type"] == "research":
+            display_research(result["content"])
+
+        elif result["type"] == "summary":
+            display_summary(result["content"])
+
+        elif result["type"] == "critique":
+            display_critique(result["content"])
+
+        elif result["type"] == "complete":
+            display_complete(result["content"])
+
+        print("\n" + "=" * 60)

@@ -6,7 +6,9 @@ def summarize(research_output):
     api_key = os.getenv("SCALEDOWN_API_KEY")
 
     if not api_key:
-        return {"summary": " ".join(text.split()[:80]) + " [compressed]"}
+        return {
+    "summary": f"=== SUMMARY REPORT ===\n\n{text[:600]}\n\n[compressed]"
+}
 
 
     url = "https://api.scaledown.xyz/compress/raw/"
@@ -27,6 +29,8 @@ def summarize(research_output):
             return {"summary": compressed}
         raise ValueError
     except Exception:
-        return {"summary": " ".join(text.split()[:80]) + " [compressed]"}
+        return {
+    "summary": f"=== SUMMARY REPORT ===\n\n{text[:600]}\n\n[compressed]"
+    }
 
 
