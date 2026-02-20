@@ -3,36 +3,59 @@
 
 ## Overview
 
-This project explores how multiple AI agents can collaborate on research-oriented tasks by sharing **compressed context instead of full reasoning histories**. The focus is on structuring research thinking and reducing redundancy rather than performing factual or web-based research.
-
-The system demonstrates a cost-conscious and transparent approach to multi-agent coordination.
-
----
-
-## Problem Statement
-
-Build a collaborative research team of AI agents using compressed context sharing to reduce token costs while coordinating on complex research tasks.
+A modular CLI-based multi-agent system that demonstrates structured research generation, evaluation-driven refinement, and API-based summarisation.
+This project was built to explore how multiple agents can collaborate through orchestration rather than relying on a single raw generative output..
 
 ---
 
-## System Design
+## What This Project Demonstrates
+
+- Multi-agent architecture with clear role separation  
+- Manager-based orchestration logic  
+- Evaluation-driven refinement loop  
+- API integration (Scaledown compression API)  
+- Fault-tolerant fallback handling  
+- Structured CLI interface
+
+## How it works:
+User Input
+   ↓
+Manager Agent
+   ↓
+Research Agent
+   ↓
+Critic Agent
+   ↓
+(Refinement if score is low)
+   ↓
+Summariser Agent (Scaledown API)
+   ↓
+Final Output
 
 The system consists of three specialised agents coordinated through a central manager.
 
 ### Research Agent
-- Frames the topic conceptually  
-- Adapts reasoning style based on the genre of the topic  
-- Produces structured research-oriented insights  
+- Detects topic genre    
+- Generates structured analytical insights    
+- Adds domain anchoring for AI-related topics
+- Outputs explicit assumptions  
 
 ### Summarizer Agent
-- Compresses verbose research output into compact representations  
-- Uses the ScaleDown Community API for context compression  
-- Explicitly marks compressed outputs using `[compressed]`  
+- Integrates with Scaledown compression API
+- Uses the ScaleDown Community API for context compression
+- Generates compressed executive summary   
+- Includes fallback if API key is unavailable
+
+### Critic Agent
+- Evaluates reasoning coverage and depth  
+- Scores output (0–3)  
+- Returns structured feedback  
+- Triggers refinement if necessary
 
 ### Manager Agent
 - Orchestrates agent interaction  
-- Controls execution flow and output selection  
-- Maintains separation between reasoning and system control  
+- Controls output modes    
+- Maintains system state    
 
 ---
 
@@ -63,5 +86,6 @@ The system consists of three specialised agents coordinated through a central ma
 
 ## Project Links
 
-- [Link to the project report](https://docs.google.com/document/d/1ZQGTB_5Fv5nMvMRKUYEltIB0LcEKtiLuJfhR-RVFOlI/edit?tab=t.0) 
+- [Link to the project report](https://docs.google.com/document/d/1ZQGTB_5Fv5nMvMRKUYEltIB0LcEKtiLuJfhR-RVFOlI/edit?tab=t.0)
+- [Link to Demo Video](https://drive.google.com/file/d/1EUJcP3hM3Feur-yplGwpS8xGfexJG0YM/view?usp=sharing)
 
